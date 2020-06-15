@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>VueJS</title>
+    <script src="vue.js"></script>
+    <link rel="stylesheet" href="style.css" />
+</head>
+
+<body>
+
+    <!-- --------------------- COMPUTED VS METHODS EXAMPLE --------------------- -->
+    <!-- <div id="app">
+        <button @click="counter++">Increase</button>
+        <button @click="counter--">Decrease</button>
+        <button @click="secondCounter++">Second counter</button> -->
+    <!-- Launches the method but not the computed because computed knows it has nothing to do with it -->
+    <!-- <p>Counter: {{ counter }} | {{ secondCounter }}</p>
+        <p>Result: {{ result() }} | {{ output }}</p>
+    </div>
+    <script>
+        new Vue({
+            el: "#app",
+            data: {
+                counter: 0,
+                secondCounter: 0
+            },
+            computed: {
+                output: function () {
+                    console.log('Computed');
+                    return this.counter > 5 ? 'Greater than 5' : 'Smaller than 5';
+                }
+            },
+            methods: {
+                result: function () {
+                    console.log('Method');
+                    return this.counter > 5 ? 'Greater than 5' : 'Smaller than 5';
+                }
+            }
+        });
+    </script> -->
+    <!-- ----------------------------------------------------------------------- -->
+
+
+    <!-- --------------------- COMPUTED VS METHOD VS WATCH --------------------- -->
+    <!-- <div id="app">
+        <button @click="counter++">Increase</button>
+        <button @click="counter--">Decrease</button>
+        <button @click="secondCounter++">Second counter</button>
+        <p>Counter: {{ counter }} | {{ secondCounter }}</p>
+        <p>Result: {{ result() }} | {{ output }}</p>
+    </div>
+    <script>
+        new Vue({
+            el: "#app",
+            data: {
+                counter: 0,
+                secondCounter: 0
+            },
+            computed: {
+                output: function () {
+                    console.log('Computed');
+                    return this.counter > 5 ? 'Greater than 5' : 'Smaller than 5';
+                }
+            },
+            watch: {
+                counter: function (value) {
+                    var vm = this;
+                    setTimeout(function () {
+                        vm.counter = 0;
+                    }, 2000)
+                }
+            },
+            methods: {
+                result: function () {
+                    console.log('Method');
+                    return this.counter > 5 ? 'Greater than 5' : 'Smaller than 5';
+                }
+            }
+        });
+    </script> -->
+    <!-- ----------------------------------------------------------------------- -->
+
+
+
+    <!-- ------------------------- STYLES WITH CLASSES ------------------------- -->
+    <!-- <div id="app">
+        <div class="demo" @click="attachRed = !attachRed" :class="divClasses"></div>
+        <div class="demo" :class="{red:attachRed}"></div>
+        <div class="demo" :class="[color, {red:attachRed}]"></div>
+        <hr>
+        <input type="text" v-model="color">
+    </div>
+    <script>
+        new Vue({
+            el: "#app",
+            data: {
+                attachRed: false,
+                color: 'green'
+            },
+            computed: {
+                divClasses: function () {
+                    return {
+                        red: this.attachRed,
+                        blue: !this.attachRed
+                    };
+                }
+            }
+        });
+    </script> -->
+    <!-- ----------------------------------------------------------------------- -->
+
+
+
+    <!-- ----------------------- STYLES WITHOUT CLASSES ------------------------ -->
+    <div id="app">
+        <div class="demo" :style="{backgroundColor:color}"></div>
+        <div class="demo" :style="myStyle"></div>
+        <div class="demo" :style="[myStyle, {height: width+'px'}]"></div>
+        <hr>
+        <input type="text" v-model="color">
+        <input type="text" v-model="width">
+    </div>
+    <script>
+        new Vue({
+            el: "#app",
+            data: {
+                color: 'gray',
+                width: 100
+            },
+            computed: {
+                myStyle: function () {
+                    return {
+                        backgroundColor: this.color,
+                        width: this.width + 'px'
+                    };
+                }
+            }
+        });
+    </script>
+</body>
+
+</html>

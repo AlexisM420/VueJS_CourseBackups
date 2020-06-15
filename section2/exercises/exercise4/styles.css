@@ -1,0 +1,46 @@
+#effect {
+    width: 100px;
+    height: 100px;
+    border: 1px solid black;
+}
+
+.highlight {
+    background-color: rgb(255, 0, 221);
+    width: 200px !important;
+}
+
+.shrink {
+    background-color: gray;
+    width: 50px !important;
+}
+
+.pink {
+    background-color: pink;
+    width: 100px;
+    height: 100px;
+}
+
+.blue {
+    background-color: paleturquoise;
+    width: 100px;
+    height: 100px;
+}
+
+.float {
+    float: right;
+}
+
+.text-color {
+    color: #999;
+}
+
+.visible {
+    width: 100px;
+    height: 50px;
+}
+
+.progress-bar {
+    width: 200px;
+    height: 20px;
+    border: 1px solid black;
+}

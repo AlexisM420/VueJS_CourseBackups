@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>VueJS</title>
+    <script src="vue.js"></script>
+</head>
+
+<body>
+    <div id="app">
+        <button v-on:click="increase(2, $event)">Click me</button>
+        <!-- <button v-on:click="counter++">Click me</button> -->
+
+        <p>{{ counter  }}</p>
+        <!-- <p>{{ counter * 2 > 10 ? 'yus' : 'no'}}</p> -->
+
+        <p v-on:mousemove="updateCoordinates">
+            Coordinates: {{x}} / {{y}}
+            - <span v-on:mousemove.stop="">DEAD SPOT</span>
+        </p>
+
+        <input type="text" v-on:keyup.enter.space="alertMe">
+    </div>
+    <script>
+        new Vue({
+            el: "#app",
+            data: {
+                counter: 0,
+                x: 0,
+                y: 0
+            },
+            methods: {
+                increase: function (step, event) {
+                    this.counter += step;
+                },
+                updateCoordinates: function (event) {
+                    this.x = event.clientX;
+                    this.y = event.clientY;
+                },
+                alertMe: function () {
+                    alert('alert!')
+                }
+                // method 1 for DEAD SPOT (span v-on:mousemove="dummy")
+                // method 2 (span v-on:mousemove.stop="")
+                // dummy: function (event) {
+                //     // so the DEAD SPOT isn't into the updateCoordinates function
+                //     event.stopPropagation();
+                // }
+            }
+        });
+    </script>
+</body>
+
+</html>

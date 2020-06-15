@@ -1,0 +1,89 @@
+UDEMY CLASS CHECKPOINT => remaking = 19 SINON -> Section 3
+
+
+
+v-once
+	Keep the inital value and not use any other values it might take later
+
+v-html
+	Output normal html through vueJS
+	
+v-bind
+	Dont use normal text, use binding as html attribute
+
+v-model
+	Setup for a data binding (2 ways)
+
+v-if
+	Attach or detach elements to the DOM (not only hide, REMOVE)
+		Including child elements
+(If you want to group without using DIV -> use <template> and doesn't show in DOM, only show nested elements)
+v-else
+	Else to the just precedent v-if statement
+v-show
+	Don't detach/remove, only hide it (display:none)
+
+v-for
+	Loop through an array and replicate the element (pulls out the content)
+
+
+v-on:click 		===== 	@click
+
+v-bind:href 	===== 	:href
+
+
+*-_-* keyModifiers... (v-on:mousemove.stop) (after the .)
+	Are chainable... ex: @mousemove.stop.prevent
+		Stop propagation - preventDefault(refresh)
+
+*-_-* Example of using ternary within an object declaration such as {{ counter }}
+<p>{{ counter * 2 > 10 ? 'Greater than 10' : 'Smaller than 10'}}</p>
+
+*-_-* Computed Properties *THEY ALL NEED TO BE FUNCTIONS*
+	Analyzes the code and runs only if it contains code that needs to be reloaded
+
+*-_-* Watch
+	Needs to match a data property
+	ex: 	data: { counter: 0 }
+		counter:function(value){ }
+	( Useful if needed to do some code after some property value changes (ex: timeOut) )
+
+
+
+<!-- ----------------------------------------------------------------------- -->
+EVENTS
+*-_-* ( Exemple de fonction a appeler lorsque event mousemove )
+<p @mousemove="updateCoordinates">
+	( La définition de la fonction )
+	updateCoordinates: function (event)
+		La fonction se fait passer automatiquement l'arg "event" (par VueJS)
+
+*-_-* ( Exemple de fonction avec plusieurs args ) *$event est un nom réservé pour la var event*
+<button @click="increase(2, $event)">
+	( Définition de fonction )
+	increase: function (incrVal, event)
+
+*-_-* Pour arrêter propagation d'événement à travers divers éléments
+1
+	<span @mousemove="dummy">DEAD SPOT</span>
+                dummy: function (event) { event.stopPropagation(); }
+2 ( Using key modifier )
+	<span @mousemove.stop="">DEAD SPOT</span>
+
+*-_-* Send alert after enter pressed ( using key modifier on event keyup )
+	<input type="text" @keyup.enter="alertMe">
+<!-- ----------------------------------------------------------------------- -->
+
+
+
+<!-- ----------------------------------------------------------------------- -->
+STYLES
+*-_-* DIV example where at click it changes attachRed value and then :class is to set the VueJS class {className:condition}
+<div class="demo" @click="attachRed = !attachRed" :class="{red:attachRed}">
+	*-_-* SAME as using...
+		<div class="demo" @click="attachRed = !attachRed" :class="divClasses">
+			computed: { divClasses:  function () { return{ red: this.attachRed, blue: !this.attachRed }; } }
+
+*-_-* Directly modifying the style ( no classes )
+<div class="demo" :style="{backgroundColor:color}"></div>
+<!-- ----------------------------------------------------------------------- -->
